@@ -1,8 +1,13 @@
 <template>
-    <div class="hero-content">
-        <p class="intro">Hello, my name is...</p>
-        <h1>{{ title ?? "Rúben Alves" }}<br></h1>
-        <h2>I'm a <span ref="spanRef" id="rewrite">{{ wordArray[counter] }}</span> developer.</h2>
+    <div class="hero-content" ref="heroContent">
+        <div class="text-content" ref="textContent">
+            <p class="intro">Hello, my name is...</p>
+            <h1>{{ title ?? "Rúben Alves" }}<br></h1>
+            <h2>I'm a <span ref="spanRef" id="rewrite">{{ wordArray[counter] }}</span> developer.</h2>
+        </div>
+        <div class="image-content" ref="imgContent">
+            <img src="../assets/images/edit-portfolio.png" alt="" srcset="">
+        </div>
     </div>
 </template>
   
@@ -11,7 +16,11 @@ import { onMounted, ref } from 'vue';
 
 const { title, words } = defineProps<{ title?: string, words?: string[] }>();
 
-const spanRef = ref<HTMLSpanElement>();
+const spanRef = ref<HTMLSpanElement | null>(null);
+const heroContent = ref<HTMLDivElement | null>(null);
+const textContent = ref<HTMLDivElement | null>(null);
+const imgContent = ref<HTMLDivElement | null>(null);
+defineExpose({heroContent, textContent, imgContent})
 
 onMounted(() => {
     setInterval(handleSpanText, 5000)
@@ -23,7 +32,6 @@ let counter = 0;
 async function handleSpanText() {
 
     if (!spanRef.value) { return; }
-    if (!spanRef.value.textContent) { return; }
 
     if (counter === wordArray.length - 1) {
         counter = 0;
@@ -32,7 +40,6 @@ async function handleSpanText() {
     }
 
     const nextWord = wordArray[counter];
-    if (!spanRef.value) { return; }
 
     if (await removeCharacter()) {
         writeWord(nextWord);
@@ -47,7 +54,9 @@ async function removeCharacter() {
             spanRef.value.textContent = spanRef.value.textContent?.slice(0, -1) ?? "";
 
             if (spanRef.value.textContent === "") {
-                resolve(true)
+                setTimeout(() => {
+                    resolve(true)
+                }, 500)
                 clearInterval(removeCharsTimer);
             }
         }, 100);
@@ -75,11 +84,12 @@ async function writeWord(word: string) {
 .hero-content {
     position: absolute;
     z-index: 5;
-    inset: 0 0 0 50%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    width: fit-content;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 7rem;
 
     pointer-events: none;
 }
@@ -119,6 +129,16 @@ h2 {
     height: 100%;
     background-color: var(--color-accent);
     animation: blink 500ms ease-out infinite;
+}
+
+.image-content {
+    width: 600px;
+    height: 500px;
+}
+
+img {
+    max-width: 100%;
+    object-fit: cover;
 }
 
 @keyframes blink {

@@ -9,28 +9,33 @@
 .container {
     width: 100%;
     padding: 0 1rem;
+    margin: 0 auto;
 }
 
 .container-sm {
     max-width: var(--breakpoint-sm);
     width: 100%;
     padding: 0 1rem;
+    margin: 0 auto;
 }
 
 .container-md {
     max-width: var(--breakpoint-md);
     width: 100%;
     padding: 0 1rem;
+    margin: 0 auto;
 }
 
 .container-lg {
     max-width: var(--breakpoint-lg);
     width: 100%;
     padding: 0 1rem;
+    margin: 0 auto;
 }
 
 .container-xl {
     max-width: var(--breakpoint-xl);
     width: 100%;
     padding: 0 1rem;
+    margin: 0 auto;
 }
