@@ -1,0 +1,15 @@
+@import "./base/_breakpoints.css";
+@import "./base/_colors.css";
+@import "./base/_grids.css";
+@import "./base/_typography.css";
+@import "./base/_utils.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}

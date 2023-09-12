@@ -1,0 +1,13 @@
+:root {
+    --color-base-lighter: #333;
+    --color-base: #222;
+    --color-base-darker: #111;
+    
+    --color-primary-lighter: rgb(154, 30, 221);
+    --color-primary: rgb(126, 18, 184);
+    --color-primary-darker: rgb(92, 8, 138);
+
+    --color-accent-lighter: rgb(247, 132, 228);
+    --color-accent: rgb(231, 82, 206);
+    --color-accent-darker: rgb(219, 37, 188);
+}

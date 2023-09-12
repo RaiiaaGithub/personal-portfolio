@@ -1,0 +1,36 @@
+:root {
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+}
+
+.container {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.container-sm {
+    max-width: var(--breakpoint-sm);
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.container-md {
+    max-width: var(--breakpoint-md);
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.container-lg {
+    max-width: var(--breakpoint-lg);
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.container-xl {
+    max-width: var(--breakpoint-xl);
+    width: 100%;
+    padding: 0 1rem;
+}
